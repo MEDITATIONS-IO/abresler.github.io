@@ -1,0 +1,14 @@
+name: "Test"
+description: "ASBC LLC"
+
+url: "http://asbcllc.com"
+# url: "http://localhost:4000"
+# url: "http://192.168.10.13:4000"
+
+# paginate: 10
+
+markdown: rdiscount
+permalink: /post/:title/
+# pygments: true
+
+exclude: [Gruntfile.js, package.json, node_modules]
