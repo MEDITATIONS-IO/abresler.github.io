@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title></title>
+    <title>Alex Bresler Data Visualization Gallery</title>
     <meta charset=utf-8>
     <script type="text/javascript" src="./d3.v3.js"></script>
 
@@ -49,30 +49,22 @@ qacct:"p-S9mx3XF_GwU-x"
 </script>
 </head>
 <body>
-  <div class="info">US Open Gallery | <a class="about-link" href="">About</a></div>
+  <div class="info">Alex Bresler Data Visualization Gallery | <a class="about-link" href="">About</a></div>
   <div class="about-box" style='text-align:justify;'>
 
       <span class="about-close" style="cursor: pointer;">x</span>
 
       <h1>Gallery</h1>
 
-  <p>This is a gallery of tennis visualizations for use in and around the 2014 US Open.  Visualizations are generated based off of both user ideas and visualization requests by <a href="http://ibm.com" target="_blank">IBM</a> and <a href="http://si.com" target="_blank">Sports Illustrated</a> (the media partners).</p>
+  <p>This is a gallery of static and interactive data visualizations created <a href="https://twitter.com/abresler" target="_blank">Alex Bresler</a></p>
 
   <p>This gallery is using a <a href="https://docs.google.com/spreadsheet/pub?key=0AklBTy5MivijdDB3eENTYnF3aUxZZUotd3hPanRvM2c#gid=0">Google Spreadsheet</a> for storing data. It makes it easier to keep the gallery updated with the latest examples and have everything in one place.</p>
 
-  <h1>How to Contribute</h1>
-
-  <p>You can share any of your relevant work for addition to the gallery.  You can do so by emailing <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=Alex@aragorntech.com" target="_blank">Alex</a> an html version of the visualization or a pre-existing live link. </p>
-
   <h1>Credits</h1>
 
-  <p>This gallery uses the same codebase as the <a href="http://biovisualize.github.com/d3visualization">d3js gallery</a>, developed by Christophe Viau <a href="https://twitter.com/d3visualization">@d3visualization</a>, with the help of the community and support from <a href="http://www.datameer.com">Datameer</a>. and <a href="https://twitter.com/mrejfox">@mrejfox</a>. Aragorn Technologies (Aragorn) would like to thank Christophe Viau for kindly letting me use it.</p>
+  <p>This gallery uses the same codebase as the <a href="http://biovisualize.github.com/d3visualization">d3js gallery</a>, developed by Christophe Viau <a href="https://twitter.com/d3visualization">@d3visualization</a>, with the help of the community and support from <a href="http://www.datameer.com">Datameer</a>. and <a href="https://twitter.com/mrejfox">@mrejfox</a>. I would like to thank Christophe Viau for kindly letting me use it.</p>
 
-  <p>Aragorn owes a huge debt of gratitude to the interactive graphics pioneers whose open-source contributions would have made this endeavour impossible.  They include, but by no means are limited to: <a href="https://twitter.com/ramnath_vaidya" target="_blank">Ramnath Vaidyanathan</a>, <a href="https://twitter.com/mbostock" target="_blank">Mike Bostock</a>, <a href="https://twitter.com/mbostock" target="_blank">Hadley Wickham</a> and <a href="https://twitter.com/timelyportfolio" target="_blank">Ken Russell</a>.</p>
-
-  <p>Finally, and most importantly, Aragorn would like to thank the open-source data science and visualization community.  Without your genorisity, creativity and contributions this first of its kind project would have been impossible.</p>
-
-  <p>Each entry in this gallery is copyrighted of its author but maybe used with credit and notification to Aragorn Technologies at the behest of the author and upon request for use by the media partners.</p>
+  <p>Each entry in this gallery is copyrighted of its Alex Bresler but maybe used with credit and notification to <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=abresler@asbcllc.com" target="_blank">ASBC LLC</a>.</p> 
 
   </div>
 <div id="nav">
@@ -130,7 +122,7 @@ qacct:"p-S9mx3XF_GwU-x"
     var numInOneScreen = Math.ceil(menu3Width / thumbSize) * Math.ceil(getDocHeight() / thumbSize);
     var numInView = numInOneScreen;
 
-    d3.csv('https://docs.google.com/spreadsheet/pub?key=0AklBTy5MivijdDB3eENTYnF3aUxZZUotd3hPanRvM2c&output=csv', function(error, _json){
+    d3.csv('https://docs.google.com/spreadsheet/pub?key=0AjXiNa8pvRV-dGNwZVdzenJZcFdnemVnZzdHdEIwWHc&output=csv', function(error, _json){
 //    d3.csv('d3gallery_feb282013.csv', function(error, _json){
         json = _json.reverse();
         buildList(dataTransformMenu1(), '.menu1-container', data1);
@@ -141,7 +133,7 @@ qacct:"p-S9mx3XF_GwU-x"
 
     function dataTransformMenu1(){
         //TODO: change in spreadsheet
-        var dimensionsMap = {author: 'Author', visualizationType: 'Creation Date', title: 'Title'};
+        var dimensionsMap = {author: 'Visualization Topic', visualizationType: 'Creation Date', title: 'Title'};
         return d3.keys(dimensionsMap).map(function(d, i){return {dimension: d, displayName: dimensionsMap[d]};});
     }
 
