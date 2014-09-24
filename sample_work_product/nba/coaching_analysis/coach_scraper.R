@@ -1,5 +1,5 @@
 ## Coach Metadata Scraper
-packages = c('rvest','dplyr','pipeR')
+packages = c('rvest','dplyr','pipeR','data.table')
 lapply(packages,library, character.only = T)
 url = "http://www.basketball-reference.com/coaches/"
 
@@ -29,6 +29,9 @@ url %>>% html() %>>%
 	)
 apply(coaches[2:3],2, function(x) as.numeric(x)) -> coaches[,2:3]
 coaches$coach %in% active -> coaches$active_coach
+coaches[coaches$coach %in% c("Lionel Hollins",'Byron Scott','Brian Shaw'),'to'] = 2015
+ifelse(coaches$to == 2015,T,F) -> coaches$active_coach
+
 url %>>% html() %>>%
 	html_nodes(css ='td:nth-child(1) a') %>>%
 	html_attrs() %>>% {paste0('http://www.basketball-reference.com',.)} -> coaches$coach_url
@@ -41,9 +44,19 @@ coaches %>%
 
 coaches$birthday %>>% year() -> coaches$birth_year
 
+
+
 ##Play with the data
 
 coaches %>%
 	filter(!is.na(birth_year)) %>>%
 	mutate(age = from - birth_year) %>%
 	filter(age == min(age)|age == max(age)) -> oldest_youngest_coaches
+
+coaches %>%
+	filter(!is.na(birth_year)) %>>%
+	mutate(age = from - birth_year) %>>%{
+		.[,'age']
+	} %>>%
+	describe()
+
